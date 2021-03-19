@@ -18,7 +18,7 @@ export class StudentRecordComponent implements OnInit {
   sub1Sort: number = 0;
   sub2Sort: number = 0;
   sub3Sort: number = 0;
-  
+
   // if 0 sort ascending 
   // if 1 sort descending
   // if 2 unsort
@@ -30,8 +30,8 @@ export class StudentRecordComponent implements OnInit {
     });
   }
 
-  UnSort(){
-    this.studentData =this.studentDataCopy;
+  UnSort() {
+    this.studentData = [...this.studentDataCopy];
   }
 
   SortByName() {
