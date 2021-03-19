@@ -11,12 +11,12 @@ export class StudentRecordComponent implements OnInit {
   constructor(private studentService: StudentService) {}
   studentData: IStudentModel[] = [];
   studentDataCopy: IStudentModel[] = [];
-  nameSort: number = 0;
-  classSort: number = 0;
-  sectionSort: number = 0;
-  sub1Sort: number = 0;
-  sub2Sort: number = 0;
-  sub3Sort: number = 0;
+  nameSort = 0;
+  classSort = 0;
+  sectionSort = 0;
+  sub1Sort = 0;
+  sub2Sort = 0;
+  sub3Sort = 0;
 
   // if 0 sort ascending
   // if 1 sort descending
@@ -29,89 +29,89 @@ export class StudentRecordComponent implements OnInit {
     });
   }
 
-  UnSort() {
+  UnSort(): void {
     this.studentData = [...this.studentDataCopy];
   }
 
-  SortByName() {
-    if (this.nameSort == 0) {
+  SortByName(): void {
+    if (this.nameSort === 0) {
       this.studentData.sort((a, b) => (a.Name > b.Name ? 1 : -1));
     }
-    if (this.nameSort == 1) {
+    if (this.nameSort === 1) {
       this.studentData.sort((a, b) => (a.Name < b.Name ? 1 : -1));
     }
-    if (this.nameSort == 2) {
+    if (this.nameSort === 2) {
       this.UnSort();
     }
     this.nameSort = (this.nameSort + 1) % 3;
   }
 
-  SortByClass() {
-    if (this.classSort == 0) {
+  SortByClass(): void {
+    if (this.classSort === 0) {
       this.studentData.sort((a, b) => (a.Class > b.Class ? 1 : -1));
     }
-    if (this.classSort == 1) {
+    if (this.classSort === 1) {
       this.studentData.sort((a, b) => (a.Class < b.Class ? 1 : -1));
     }
-    if (this.classSort == 2) {
+    if (this.classSort === 2) {
       this.UnSort();
     }
     this.classSort = (this.classSort + 1) % 3;
   }
 
-  SortBySection() {
-    if (this.sectionSort == 0) {
+  SortBySection(): void {
+    if (this.sectionSort === 0) {
       this.studentData.sort((a, b) => (a.Section > b.Section ? 1 : -1));
     }
-    if (this.sectionSort == 1) {
+    if (this.sectionSort === 1) {
       this.studentData.sort((a, b) => (a.Section < b.Section ? 1 : -1));
     }
-    if (this.sectionSort == 2) {
+    if (this.sectionSort === 2) {
       this.UnSort();
     }
     this.sectionSort = (this.sectionSort + 1) % 3;
   }
 
-  SortBySub1() {
-    if (this.sub1Sort == 0) {
+  SortBySub1(): void {
+    if (this.sub1Sort === 0) {
       this.studentData.sort((a, b) => (a.Sub1 > b.Sub1 ? 1 : -1));
     }
-    if (this.sub1Sort == 1) {
+    if (this.sub1Sort === 1) {
       this.studentData.sort((a, b) => (a.Sub1 < b.Sub1 ? 1 : -1));
     }
-    if (this.sub1Sort == 2) {
+    if (this.sub1Sort === 2) {
       this.UnSort();
     }
     this.sub1Sort = (this.sub1Sort + 1) % 3;
   }
 
-  SortBySub2() {
-    if (this.sub2Sort == 0) {
+  SortBySub2(): void {
+    if (this.sub2Sort === 0) {
       this.studentData.sort((a, b) => (a.Sub2 > b.Sub2 ? 1 : -1));
     }
-    if (this.sub2Sort == 1) {
+    if (this.sub2Sort === 1) {
       this.studentData.sort((a, b) => (a.Sub2 < b.Sub2 ? 1 : -1));
     }
-    if (this.sub2Sort == 2) {
+    if (this.sub2Sort === 2) {
       this.UnSort();
     }
     this.sub2Sort = (this.sub2Sort + 1) % 3;
   }
 
-  SortBySub3() {
-    if (this.sub3Sort == 0) {
+  SortBySub3(): void {
+    if (this.sub3Sort === 0) {
       this.studentData.sort((a, b) => (a.Sub3 > b.Sub3 ? 1 : -1));
     }
-    if (this.sub3Sort == 1) {
+    if (this.sub3Sort === 1) {
       this.studentData.sort((a, b) => (a.Sub3 < b.Sub3 ? 1 : -1));
     }
-    if (this.sub3Sort == 2) {
+    if (this.sub3Sort === 2) {
       this.UnSort();
     }
     this.sub3Sort = (this.sub3Sort + 1) % 3;
   }
 
-  Sort(key) {
+  Sort(key): void {
     switch (key) {
       case 'Name':
         this.SortByName();

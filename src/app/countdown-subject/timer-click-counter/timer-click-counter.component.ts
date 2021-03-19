@@ -7,8 +7,8 @@ import { TimerService } from '../services/timer.service';
   styleUrls: ['./timer-click-counter.component.css'],
 })
 export class TimerClickCounterComponent implements OnInit {
-  start: number = 0;
-  pause: number = 0;
+  start = 0;
+  pause = 0;
   constructor(private timerService: TimerService) {}
 
   ngOnInit(): void {

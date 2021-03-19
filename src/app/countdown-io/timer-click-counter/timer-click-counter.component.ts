@@ -7,8 +7,8 @@ import { Component, Input, OnChanges } from '@angular/core';
 })
 export class TimerClickCounterComponent implements OnChanges {
   constructor() {}
-  start: number = 0;
-  pause: number = 0;
+  start = 0;
+  pause = 0;
   @Input() startButtonCount: number;
   @Input() pauseButtonCount: number;
   ngOnChanges(): void {

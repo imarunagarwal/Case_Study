@@ -1,25 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-timer-settings',
   templateUrl: './timer-settings.component.html',
   styleUrls: ['./timer-settings.component.css'],
 })
-export class TimerSettingsComponent implements OnInit {
-  ngOnInit(): void {}
-  startButtonCounter: number = 0;
-  pauseButtonCounter: number = 0;
-  timerStopped: boolean = true;
-  timeCounter: number = 10;
-  message: string = '';
-  lapsMassage: string = '';
+export class TimerSettingsComponent {
+  startButtonCounter = 0;
+  pauseButtonCounter = 0;
+  timerStopped = true;
+  timeCounter = 10;
+  message = '';
+  lapsMassage = '';
   interval;
 
   constructor() {}
 
-  StartPauseClick() {
+  StartPauseClick(): void {
     if (this.timerStopped) {
-      //Start timer
+      // Start timer
       this.lapsMassage += `Started At ${new Date().toLocaleString()}<br/>`;
       this.startButtonCounter += 1;
 
@@ -30,9 +29,9 @@ export class TimerSettingsComponent implements OnInit {
       }, 1000);
       this.timerStopped = false;
     } else {
-      //Pause timer
+      // Pause timer
       this.lapsMassage += `Paused At ${new Date().toLocaleString()}<br/>`;
-      let element = document.getElementById('message');
+      const element = document.getElementById('message');
       element.innerHTML += `<span>Paused at ${this.timeCounter}</span><br/>`;
       this.pauseButtonCounter++;
       clearInterval(this.interval);
@@ -40,7 +39,7 @@ export class TimerSettingsComponent implements OnInit {
     }
   }
 
-  Reset() {
+  Reset(): void {
     this.timeCounter = 10;
     clearInterval(this.interval);
     this.timerStopped = true;

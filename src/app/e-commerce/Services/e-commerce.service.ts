@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 export class ECommerceDataService {
   constructor(private http: HttpClient) {}
 
-  getData() {
+  getData(): Observable<any> {
     return this.http.get('./assets/json_data/ecomm-data.json');
   }
 }

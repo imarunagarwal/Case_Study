@@ -12,7 +12,7 @@ export class TimerService {
 
   constructor() {}
 
-  public setStartButtonCountObserver(count: number) {
+  public setStartButtonCountObserver(count: number): void {
     this.startButtonCount$.next(count);
   }
 
@@ -20,7 +20,7 @@ export class TimerService {
     return this.startButtonCount$.asObservable();
   }
 
-  public setPauseButtonCountObserver(count: number) {
+  public setPauseButtonCountObserver(count: number): void {
     this.pauseButtonCount$.next(count);
   }
 
@@ -28,7 +28,7 @@ export class TimerService {
     return this.pauseButtonCount$.asObservable();
   }
 
-  public setTimerStartObserver(count: number) {
+  public setTimerStartObserver(count: number): void {
     this.timerStartValue$.next(count);
   }
 
@@ -36,7 +36,7 @@ export class TimerService {
     return this.timerStartValue$.asObservable();
   }
 
-  public setTimerLapsOutputObserver(value: string) {
+  public setTimerLapsOutputObserver(value: string): void {
     this.timerLapsOutput$.next(value);
   }
 

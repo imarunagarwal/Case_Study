@@ -16,13 +16,16 @@ declare var $: any;
   styleUrls: ['./dynamic-div-onscroll.component.css'],
 })
 export class DynamicDivOnscrollComponent implements AfterViewInit {
+  index = 0;
+
+  componentsReferences = [];
   constructor(private CFR: ComponentFactoryResolver) {}
 
   @ViewChild('viewContainerRef', { read: ViewContainerRef })
   VCR: ViewContainerRef;
 
   @HostListener('window:scroll', ['$event'])
-  onScroll() {
+  onScroll(): void {
     if (
       $(window).scrollTop() >=
       $('#scrollDiv').offset().top +
@@ -33,10 +36,6 @@ export class DynamicDivOnscrollComponent implements AfterViewInit {
     }
   }
 
-  index: number = 0;
-
-  componentsReferences = [];
-
   ngAfterViewInit(): void {
     this.createComponent();
     this.createComponent();
@@ -44,12 +43,12 @@ export class DynamicDivOnscrollComponent implements AfterViewInit {
     this.createComponent();
   }
 
-  createComponent() {
-    let componentFactory = this.CFR.resolveComponentFactory(DivComponent);
-    let componentRef: ComponentRef<DivComponent> = this.VCR.createComponent(
+  createComponent(): void {
+    const componentFactory = this.CFR.resolveComponentFactory(DivComponent);
+    const componentRef: ComponentRef<DivComponent> = this.VCR.createComponent(
       componentFactory
     );
-    let currentComponent = componentRef.instance;
+    const currentComponent = componentRef.instance;
 
     currentComponent.index = ++this.index;
 

@@ -10,7 +10,7 @@ export class DivComponent {
 
   public index: number;
 
-  buttonClicked() {
+  buttonClicked(): void {
     alert(`Button ${this.index} Clicked`);
   }
 }

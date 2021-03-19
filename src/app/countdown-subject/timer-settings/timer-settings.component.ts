@@ -7,14 +7,14 @@ import { TimerService } from '../services/timer.service';
   styleUrls: ['./timer-settings.component.css'],
 })
 export class TimerSettingsComponent {
-  timerStopped: boolean = true;
-  timeCounter: string = '10';
-  message: string = '';
+  timerStopped = true;
+  timeCounter = '10';
+  message = '';
   interval;
 
   constructor(private timerService: TimerService) {}
 
-  StartPauseClick(counter) {
+  StartPauseClick(counter): void {
     let val = 0;
     this.timerService.setTimerStartObserver(+counter);
     let lapsOutput;
@@ -23,7 +23,7 @@ export class TimerSettingsComponent {
     });
 
     if (this.timerStopped) {
-      //Start timer
+      // Start timer
       this.timerService.getStartButtonCountObserver().subscribe((value) => {
         val = value;
       });
@@ -34,19 +34,23 @@ export class TimerSettingsComponent {
 
       let timer = 0;
       this.interval = setInterval(() => {
-        this.timerService.getTimerStartObserver().subscribe((counter) => {
-          if (counter > 0) {
-            timer = counter;
-          }
-        });
+        this.timerService
+          .getTimerStartObserver()
+          .subscribe((timerStartCounter) => {
+            if (timerStartCounter > 0) {
+              timer = timerStartCounter;
+            }
+          });
         this.timerService.setTimerStartObserver(timer - 1);
-        this.timerService.getTimerStartObserver().subscribe((counter) => {
-          this.timeCounter = `${counter}`;
-        });
+        this.timerService
+          .getTimerStartObserver()
+          .subscribe((timerStartCounter) => {
+            this.timeCounter = `${timerStartCounter}`;
+          });
       }, 1000);
       this.timerStopped = false;
     } else {
-      //Pause timer
+      // Pause timer
       let timeValue;
       this.timerService.getTimerStartObserver().subscribe((timer) => {
         timeValue = timer;
@@ -58,7 +62,7 @@ export class TimerSettingsComponent {
         `${lapsOutput}Paused At ${new Date()}<br/>`
       );
 
-      let element = document.getElementById('message');
+      const element = document.getElementById('message');
       element.innerHTML += `<span>Paused at ${timeValue}</span><br/>`;
 
       this.timerService.getPauseButtonCountObserver().subscribe((value) => {
@@ -72,7 +76,7 @@ export class TimerSettingsComponent {
     }
   }
 
-  Reset() {
+  Reset(): void {
     this.timeCounter = '10';
     clearInterval(this.interval);
     this.timerService.setTimerStartObserver(+this.timeCounter);
