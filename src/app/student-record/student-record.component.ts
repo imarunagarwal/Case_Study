@@ -10,7 +10,7 @@ import { StudentService } from './Service/student.service';
 })
 export class StudentRecordComponent implements OnInit, OnDestroy {
   constructor(private studentService: StudentService) {}
-  private studentData: IStudentModel[] = [];
+  studentData: IStudentModel[] = [];
   private studentDataCopy: IStudentModel[] = [];
   private nameSort = 0;
   private classSort = 0;
