@@ -6,10 +6,9 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class ECommerceDataService {
-  
   constructor(private http: HttpClient) {}
 
   getData() {
-    return this.http.get("./assets/json_data/ecomm-data.json");
+    return this.http.get('./assets/json_data/ecomm-data.json');
   }
 }

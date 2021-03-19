@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TimerService {
   private startButtonCount$ = new BehaviorSubject<number>(0);
@@ -10,7 +10,7 @@ export class TimerService {
   private timerStartValue$ = new BehaviorSubject<number>(0);
   private timerLapsOutput$ = new BehaviorSubject<string>('');
 
-  constructor() { }
+  constructor() {}
 
   public setStartButtonCountObserver(count: number) {
     this.startButtonCount$.next(count);

@@ -3,13 +3,10 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-timer-settings',
   templateUrl: './timer-settings.component.html',
-  styleUrls: ['./timer-settings.component.css']
+  styleUrls: ['./timer-settings.component.css'],
 })
 export class TimerSettingsComponent implements OnInit {
-
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
   startButtonCounter: number = 0;
   pauseButtonCounter: number = 0;
   timerStopped: boolean = true;
@@ -18,7 +15,7 @@ export class TimerSettingsComponent implements OnInit {
   lapsMassage: string = '';
   interval;
 
-  constructor() { }
+  constructor() {}
 
   StartPauseClick() {
     if (this.timerStopped) {
@@ -32,12 +29,11 @@ export class TimerSettingsComponent implements OnInit {
         }
       }, 1000);
       this.timerStopped = false;
-    }
-    else {
+    } else {
       //Pause timer
       this.lapsMassage += `Paused At ${new Date().toLocaleString()}<br/>`;
-      let element = document.getElementById("message");
-      element.innerHTML += `<span>Paused at ${this.timeCounter}</span><br/>`
+      let element = document.getElementById('message');
+      element.innerHTML += `<span>Paused at ${this.timeCounter}</span><br/>`;
       this.pauseButtonCounter++;
       clearInterval(this.interval);
       this.timerStopped = true;
@@ -50,7 +46,7 @@ export class TimerSettingsComponent implements OnInit {
     this.timerStopped = true;
     this.pauseButtonCounter = 0;
     this.startButtonCounter = 0;
-    document.getElementById("message").innerHTML = '';
+    document.getElementById('message').innerHTML = '';
     this.lapsMassage = '';
   }
 }

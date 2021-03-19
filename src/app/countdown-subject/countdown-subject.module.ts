@@ -10,11 +10,13 @@ import { TimerClickCounterComponent } from './timer-click-counter/timer-click-co
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [CountdownSubjectComponent, TimerComponent, TimerSettingsComponent, TimerOutputsComponent, TimerClickCounterComponent],
-  imports: [
-    CommonModule,
-    CountdownSubjectRoutingModule,
-    FormsModule
-  ]
+  declarations: [
+    CountdownSubjectComponent,
+    TimerComponent,
+    TimerSettingsComponent,
+    TimerOutputsComponent,
+    TimerClickCounterComponent,
+  ],
+  imports: [CommonModule, CountdownSubjectRoutingModule, FormsModule],
 })
-export class CountdownSubjectModule { }
+export class CountdownSubjectModule {}

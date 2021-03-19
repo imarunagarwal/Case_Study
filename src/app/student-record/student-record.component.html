@@ -1,22 +1,22 @@
 <table class="table table-striped">
-    <thead>
-        <tr>
-            <th scope="col" (click)="Sort('Name')">Name </th>
-            <th scope="col" (click)="Sort('Class')">Class </th>
-            <th scope="col" (click)="Sort('Section')">Section </th>
-            <th scope="col" (click)="Sort('Sub1')">Sub1 </th>
-            <th scope="col" (click)="Sort('Sub2')">Sub2 </th>
-            <th scope="col" (click)="Sort('Sub3')">Sub3 </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let row of studentData">
-            <td>{{row.Name}}</td>
-            <td>{{row.Class}}</td>
-            <td>{{row.Section}}</td>
-            <td>{{row.Sub1}}</td>
-            <td>{{row.Sub2}}</td>
-            <td>{{row.Sub3}}</td>
-        </tr>
-    </tbody>
+  <thead>
+    <tr>
+      <th scope="col" (click)="Sort('Name')">Name</th>
+      <th scope="col" (click)="Sort('Class')">Class</th>
+      <th scope="col" (click)="Sort('Section')">Section</th>
+      <th scope="col" (click)="Sort('Sub1')">Sub1</th>
+      <th scope="col" (click)="Sort('Sub2')">Sub2</th>
+      <th scope="col" (click)="Sort('Sub3')">Sub3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of studentData">
+      <td>{{ row.Name }}</td>
+      <td>{{ row.Class }}</td>
+      <td>{{ row.Section }}</td>
+      <td>{{ row.Sub1 }}</td>
+      <td>{{ row.Sub2 }}</td>
+      <td>{{ row.Sub3 }}</td>
+    </tr>
+  </tbody>
 </table>

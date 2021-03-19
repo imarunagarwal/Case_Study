@@ -6,6 +6,6 @@ const routes: Routes = [{ path: '', component: ImageComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class ImageRoutingModule { }
+export class ImageRoutingModule {}

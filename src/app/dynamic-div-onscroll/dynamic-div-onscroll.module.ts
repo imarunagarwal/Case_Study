@@ -5,12 +5,8 @@ import { DynamicDivOnscrollRoutingModule } from './dynamic-div-onscroll-routing.
 import { DynamicDivOnscrollComponent } from './dynamic-div-onscroll.component';
 import { DivComponent } from './div/div.component';
 
-
 @NgModule({
   declarations: [DynamicDivOnscrollComponent, DivComponent],
-  imports: [
-    CommonModule,
-    DynamicDivOnscrollRoutingModule
-  ]
+  imports: [CommonModule, DynamicDivOnscrollRoutingModule],
 })
-export class DynamicDivOnscrollModule { }
+export class DynamicDivOnscrollModule {}

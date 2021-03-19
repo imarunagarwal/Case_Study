@@ -6,6 +6,6 @@ const routes: Routes = [{ path: '', component: TimerSettingsComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class CountdownIoRoutingModule { }
+export class CountdownIoRoutingModule {}

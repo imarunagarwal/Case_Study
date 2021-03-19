@@ -1,23 +1,23 @@
-.row{
-    padding:1rem;
+.row {
+  padding: 1rem;
 }
-.border{
-    border: solid 1px black;
-    border-radius: 0.5rem;
-}
-
-.timer-setting{
-    min-height: 200px;
+.border {
+  border: solid 1px black;
+  border-radius: 0.5rem;
 }
 
-.lapsOutput{
-    height: 200px;
-    max-height: 200px;
-    overflow-y: scroll;
+.timer-setting {
+  min-height: 200px;
 }
 
-#message{
-    height:80px;
-    max-height: 80px;
-    overflow-y: scroll;
+.lapsOutput {
+  height: 200px;
+  max-height: 200px;
+  overflow-y: scroll;
+}
+
+#message {
+  height: 80px;
+  max-height: 80px;
+  overflow-y: scroll;
 }

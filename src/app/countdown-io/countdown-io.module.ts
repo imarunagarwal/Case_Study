@@ -8,11 +8,12 @@ import { TimerClickCounterComponent } from './timer-click-counter/timer-click-co
 import { TimerOutputsComponent } from './timer-outputs/timer-outputs.component';
 
 @NgModule({
-  declarations: [TimerSettingsComponent, TimerComponent, TimerClickCounterComponent, TimerOutputsComponent],
-  imports: [
-    CommonModule,
-    CountdownIoRoutingModule,
-    FormsModule
-  ]
+  declarations: [
+    TimerSettingsComponent,
+    TimerComponent,
+    TimerClickCounterComponent,
+    TimerOutputsComponent,
+  ],
+  imports: [CommonModule, CountdownIoRoutingModule, FormsModule],
 })
-export class CountdownIoModule { }
+export class CountdownIoModule {}

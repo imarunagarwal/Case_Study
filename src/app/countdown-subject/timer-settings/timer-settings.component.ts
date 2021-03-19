@@ -4,7 +4,7 @@ import { TimerService } from '../services/timer.service';
 @Component({
   selector: 'app-timer-settings',
   templateUrl: './timer-settings.component.html',
-  styleUrls: ['./timer-settings.component.css']
+  styleUrls: ['./timer-settings.component.css'],
 })
 export class TimerSettingsComponent {
   timerStopped: boolean = true;
@@ -12,51 +12,54 @@ export class TimerSettingsComponent {
   message: string = '';
   interval;
 
-  constructor(private timerService: TimerService) { }
+  constructor(private timerService: TimerService) {}
 
   StartPauseClick(counter) {
     let val = 0;
     this.timerService.setTimerStartObserver(+counter);
     let lapsOutput;
-    this.timerService.getTimerLapsOutputObserver().subscribe(value => {
+    this.timerService.getTimerLapsOutputObserver().subscribe((value) => {
       lapsOutput = value;
-    })
+    });
 
     if (this.timerStopped) {
       //Start timer
       this.timerService.getStartButtonCountObserver().subscribe((value) => {
         val = value;
       });
-      this.timerService.setTimerLapsOutputObserver(`${lapsOutput}Started At ${new Date()}<br/>`);
+      this.timerService.setTimerLapsOutputObserver(
+        `${lapsOutput}Started At ${new Date()}<br/>`
+      );
       this.timerService.setStartButtonCountObserver(val + 1);
 
       let timer = 0;
       this.interval = setInterval(() => {
-        this.timerService.getTimerStartObserver().subscribe(counter => {
+        this.timerService.getTimerStartObserver().subscribe((counter) => {
           if (counter > 0) {
             timer = counter;
           }
         });
         this.timerService.setTimerStartObserver(timer - 1);
-        this.timerService.getTimerStartObserver().subscribe(counter => {
+        this.timerService.getTimerStartObserver().subscribe((counter) => {
           this.timeCounter = `${counter}`;
-        })
+        });
       }, 1000);
       this.timerStopped = false;
-    }
-    else {
+    } else {
       //Pause timer
       let timeValue;
-      this.timerService.getTimerStartObserver().subscribe(timer => {
+      this.timerService.getTimerStartObserver().subscribe((timer) => {
         timeValue = timer;
       });
-      this.timerService.getTimerLapsOutputObserver().subscribe(value => {
+      this.timerService.getTimerLapsOutputObserver().subscribe((value) => {
         lapsOutput = value;
-      })
-      this.timerService.setTimerLapsOutputObserver(`${lapsOutput}Paused At ${new Date()}<br/>`);
+      });
+      this.timerService.setTimerLapsOutputObserver(
+        `${lapsOutput}Paused At ${new Date()}<br/>`
+      );
 
-      let element = document.getElementById("message");
-      element.innerHTML += `<span>Paused at ${timeValue}</span><br/>`
+      let element = document.getElementById('message');
+      element.innerHTML += `<span>Paused at ${timeValue}</span><br/>`;
 
       this.timerService.getPauseButtonCountObserver().subscribe((value) => {
         val = value;
@@ -76,7 +79,7 @@ export class TimerSettingsComponent {
     this.timerService.setPauseButtonCountObserver(0);
     this.timerService.setStartButtonCountObserver(0);
     this.timerStopped = true;
-    document.getElementById("message").innerHTML = '';
+    document.getElementById('message').innerHTML = '';
     this.timerService.setTimerLapsOutputObserver('');
   }
 }

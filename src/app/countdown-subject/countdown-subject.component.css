@@ -1,8 +1,8 @@
-.border{
-    border: solid 1px black;
-    border-radius: 0.5rem;
+.border {
+  border: solid 1px black;
+  border-radius: 0.5rem;
 }
 
-.row{
-    padding:1rem;
+.row {
+  padding: 1rem;
 }

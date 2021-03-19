@@ -1,23 +1,34 @@
-import { AfterViewInit, Component, ComponentFactoryResolver, ComponentRef, HostListener, ViewChild, ViewContainerRef } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ComponentFactoryResolver,
+  ComponentRef,
+  HostListener,
+  ViewChild,
+  ViewContainerRef,
+} from '@angular/core';
 import { DivComponent } from './div/div.component';
 declare var $: any;
 
 @Component({
   selector: 'app-dynamic-div-onscroll',
   templateUrl: './dynamic-div-onscroll.component.html',
-  styleUrls: ['./dynamic-div-onscroll.component.css']
+  styleUrls: ['./dynamic-div-onscroll.component.css'],
 })
 export class DynamicDivOnscrollComponent implements AfterViewInit {
+  constructor(private CFR: ComponentFactoryResolver) {}
 
-  constructor(private CFR: ComponentFactoryResolver) {
-  }
+  @ViewChild('viewContainerRef', { read: ViewContainerRef })
+  VCR: ViewContainerRef;
 
-  @ViewChild('viewContainerRef', { read: ViewContainerRef }) VCR: ViewContainerRef;
-
-
-  @HostListener("window:scroll", ["$event"])
+  @HostListener('window:scroll', ['$event'])
   onScroll() {
-    if ($(window).scrollTop() >= $('#scrollDiv').offset().top + $('#scrollDiv').outerHeight() - window.innerHeight) {
+    if (
+      $(window).scrollTop() >=
+      $('#scrollDiv').offset().top +
+        $('#scrollDiv').outerHeight() -
+        window.innerHeight
+    ) {
       this.createComponent();
     }
   }
@@ -25,7 +36,6 @@ export class DynamicDivOnscrollComponent implements AfterViewInit {
   index: number = 0;
 
   componentsReferences = [];
-
 
   ngAfterViewInit(): void {
     this.createComponent();
@@ -36,7 +46,9 @@ export class DynamicDivOnscrollComponent implements AfterViewInit {
 
   createComponent() {
     let componentFactory = this.CFR.resolveComponentFactory(DivComponent);
-    let componentRef: ComponentRef<DivComponent> = this.VCR.createComponent(componentFactory);
+    let componentRef: ComponentRef<DivComponent> = this.VCR.createComponent(
+      componentFactory
+    );
     let currentComponent = componentRef.instance;
 
     currentComponent.index = ++this.index;

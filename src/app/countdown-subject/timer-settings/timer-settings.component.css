@@ -1,9 +1,9 @@
-#message{
-    height:80px;
-    max-height: 80px;
-    overflow-y: scroll;
+#message {
+  height: 80px;
+  max-height: 80px;
+  overflow-y: scroll;
 }
 
-.row{
-    padding:1rem;
+.row {
+  padding: 1rem;
 }

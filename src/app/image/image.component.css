@@ -1,14 +1,14 @@
-div{
-    padding: 2rem;
+div {
+  padding: 2rem;
 }
 
 .fill {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 .fill img {
-    min-width: 50%;
-    min-height: 50%
+  min-width: 50%;
+  min-height: 50%;
 }

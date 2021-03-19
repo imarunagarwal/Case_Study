@@ -3,17 +3,14 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-div',
   templateUrl: './div.component.html',
-  styleUrls: ['./div.component.css']
+  styleUrls: ['./div.component.css'],
 })
-
-
 export class DivComponent {
-
-  constructor() { }
+  constructor() {}
 
   public index: number;
 
-  buttonClicked(){
+  buttonClicked() {
     alert(`Button ${this.index} Clicked`);
   }
 }
