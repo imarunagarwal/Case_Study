@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { IStudentModel } from './Model/IStudentMoel';
 import { StudentService } from './Service/student.service';
 
@@ -7,26 +8,33 @@ import { StudentService } from './Service/student.service';
   templateUrl: './student-record.component.html',
   styleUrls: ['./student-record.component.css'],
 })
-export class StudentRecordComponent implements OnInit {
+export class StudentRecordComponent implements OnInit, OnDestroy {
   constructor(private studentService: StudentService) {}
-  studentData: IStudentModel[] = [];
-  studentDataCopy: IStudentModel[] = [];
-  nameSort = 0;
-  classSort = 0;
-  sectionSort = 0;
-  sub1Sort = 0;
-  sub2Sort = 0;
-  sub3Sort = 0;
+  private studentData: IStudentModel[] = [];
+  private studentDataCopy: IStudentModel[] = [];
+  private nameSort = 0;
+  private classSort = 0;
+  private sectionSort = 0;
+  private sub1Sort = 0;
+  private sub2Sort = 0;
+  private sub3Sort = 0;
+  private getStudentDataSubscription: Subscription;
 
   // if 0 sort ascending
   // if 1 sort descending
   // if 2 unsort
 
   ngOnInit(): void {
-    this.studentService.getData().subscribe((data: IStudentModel[]) => {
-      this.studentData = data;
-      this.studentDataCopy = [...data];
-    });
+    this.getStudentDataSubscription = this.studentService
+      .getData()
+      .subscribe((data: IStudentModel[]) => {
+        this.studentData = data;
+        this.studentDataCopy = [...data];
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.getStudentDataSubscription.unsubscribe();
   }
 
   UnSort(): void {

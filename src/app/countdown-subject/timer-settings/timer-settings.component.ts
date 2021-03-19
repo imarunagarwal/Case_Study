@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { TimerService } from '../services/timer.service';
 
 @Component({
@@ -6,25 +7,36 @@ import { TimerService } from '../services/timer.service';
   templateUrl: './timer-settings.component.html',
   styleUrls: ['./timer-settings.component.css'],
 })
-export class TimerSettingsComponent {
+export class TimerSettingsComponent implements OnDestroy {
   timerStopped = true;
   timeCounter = '10';
   message = '';
   interval;
+  private getTimerLapsOutputSubscription: Subscription;
+  private getStartButtonCountSubscription: Subscription;
+  private getTimerStartSubscription: Subscription;
+  private getPauseButtonCountSubscription: Subscription;
 
   constructor(private timerService: TimerService) {}
+
+  ngOnDestroy(): void {
+    this.getTimerLapsOutputSubscription?.unsubscribe();
+    this.getStartButtonCountSubscription?.unsubscribe();
+    this.getTimerStartSubscription?.unsubscribe();
+    this.getPauseButtonCountSubscription?.unsubscribe();
+  }
 
   StartPauseClick(counter): void {
     let val = 0;
     this.timerService.setTimerStartObserver(+counter);
     let lapsOutput;
-    this.timerService.getTimerLapsOutputObserver().subscribe((value) => {
+    this.getTimerLapsOutputSubscription = this.timerService.getTimerLapsOutputObserver().subscribe((value) => {
       lapsOutput = value;
     });
 
     if (this.timerStopped) {
       // Start timer
-      this.timerService.getStartButtonCountObserver().subscribe((value) => {
+      this.getStartButtonCountSubscription = this.timerService.getStartButtonCountObserver().subscribe((value) => {
         val = value;
       });
       this.timerService.setTimerLapsOutputObserver(
@@ -34,7 +46,7 @@ export class TimerSettingsComponent {
 
       let timer = 0;
       this.interval = setInterval(() => {
-        this.timerService
+        this.getTimerStartSubscription = this.timerService
           .getTimerStartObserver()
           .subscribe((timerStartCounter) => {
             if (timerStartCounter > 0) {
@@ -42,7 +54,7 @@ export class TimerSettingsComponent {
             }
           });
         this.timerService.setTimerStartObserver(timer - 1);
-        this.timerService
+        this.getTimerStartSubscription = this.timerService
           .getTimerStartObserver()
           .subscribe((timerStartCounter) => {
             this.timeCounter = `${timerStartCounter}`;
@@ -52,10 +64,10 @@ export class TimerSettingsComponent {
     } else {
       // Pause timer
       let timeValue;
-      this.timerService.getTimerStartObserver().subscribe((timer) => {
+      this.getTimerStartSubscription = this.timerService.getTimerStartObserver().subscribe((timer) => {
         timeValue = timer;
       });
-      this.timerService.getTimerLapsOutputObserver().subscribe((value) => {
+      this.getTimerLapsOutputSubscription = this.timerService.getTimerLapsOutputObserver().subscribe((value) => {
         lapsOutput = value;
       });
       this.timerService.setTimerLapsOutputObserver(
@@ -65,7 +77,7 @@ export class TimerSettingsComponent {
       const element = document.getElementById('message');
       element.innerHTML += `<span>Paused at ${timeValue}</span><br/>`;
 
-      this.timerService.getPauseButtonCountObserver().subscribe((value) => {
+      this.getPauseButtonCountSubscription = this.timerService.getPauseButtonCountObserver().subscribe((value) => {
         val = value;
       });
 

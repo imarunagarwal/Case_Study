@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { TimerService } from '../services/timer.service';
 
 @Component({
@@ -6,12 +7,19 @@ import { TimerService } from '../services/timer.service';
   templateUrl: './timer-outputs.component.html',
   styleUrls: ['./timer-outputs.component.css'],
 })
-export class TimerOutputsComponent implements OnInit {
+export class TimerOutputsComponent implements OnInit, OnDestroy {
+  private getTimerLapsOutputSubsription: Subscription;
   constructor(private timerService: TimerService) {}
 
   ngOnInit(): void {
-    this.timerService.getTimerLapsOutputObserver().subscribe((value) => {
-      document.getElementById('lapsOutput').innerHTML = value;
-    });
+    this.getTimerLapsOutputSubsription = this.timerService
+      .getTimerLapsOutputObserver()
+      .subscribe((value) => {
+        document.getElementById('lapsOutput').innerHTML = value;
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.getTimerLapsOutputSubsription.unsubscribe();
   }
 }
