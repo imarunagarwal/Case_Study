@@ -1,0 +1,13 @@
+.box-200{
+    height:200px;
+    width:200px;
+    border:none;
+    background-color:lightgray;
+    margin: 1rem auto;
+    padding: 85px 50px;
+}
+
+.center-button{
+    width:100px;
+    margin: auto;
+}

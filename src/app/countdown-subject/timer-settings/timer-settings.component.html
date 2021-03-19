@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-md-5">Enter Timer Limit</div>
+    <div class="col-md-7">
+        <input type="number" [ngModel]="timeCounter" #counter name="timer">
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-md-3 offset-md-1">
+        <button class="btn btn-primary" (click)="StartPauseClick(counter.value)">Start/Pause</button>
+    </div>
+    <div class="col-md-3 offset-md-1">
+        <button class="btn btn-primary" (click)="Reset()">Reset</button>
+    </div>
+</div>
+<div class="row">
+    <div id ="message" class="col-md-12">
+        {{message}}
+    </div>
+</div>
