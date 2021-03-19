@@ -30,15 +30,19 @@ export class TimerSettingsComponent implements OnDestroy {
     let val = 0;
     this.timerService.setTimerStartObserver(+counter);
     let lapsOutput;
-    this.getTimerLapsOutputSubscription = this.timerService.getTimerLapsOutputObserver().subscribe((value) => {
-      lapsOutput = value;
-    });
+    this.getTimerLapsOutputSubscription = this.timerService
+      .getTimerLapsOutputObserver()
+      .subscribe((value) => {
+        lapsOutput = value;
+      });
 
     if (this.timerStopped) {
       // Start timer
-      this.getStartButtonCountSubscription = this.timerService.getStartButtonCountObserver().subscribe((value) => {
-        val = value;
-      });
+      this.getStartButtonCountSubscription = this.timerService
+        .getStartButtonCountObserver()
+        .subscribe((value) => {
+          val = value;
+        });
       this.timerService.setTimerLapsOutputObserver(
         `${lapsOutput}Started At ${new Date()}<br/>`
       );
@@ -64,12 +68,16 @@ export class TimerSettingsComponent implements OnDestroy {
     } else {
       // Pause timer
       let timeValue;
-      this.getTimerStartSubscription = this.timerService.getTimerStartObserver().subscribe((timer) => {
-        timeValue = timer;
-      });
-      this.getTimerLapsOutputSubscription = this.timerService.getTimerLapsOutputObserver().subscribe((value) => {
-        lapsOutput = value;
-      });
+      this.getTimerStartSubscription = this.timerService
+        .getTimerStartObserver()
+        .subscribe((timer) => {
+          timeValue = timer;
+        });
+      this.getTimerLapsOutputSubscription = this.timerService
+        .getTimerLapsOutputObserver()
+        .subscribe((value) => {
+          lapsOutput = value;
+        });
       this.timerService.setTimerLapsOutputObserver(
         `${lapsOutput}Paused At ${new Date()}<br/>`
       );
@@ -77,9 +85,11 @@ export class TimerSettingsComponent implements OnDestroy {
       const element = document.getElementById('message');
       element.innerHTML += `<span>Paused at ${timeValue}</span><br/>`;
 
-      this.getPauseButtonCountSubscription = this.timerService.getPauseButtonCountObserver().subscribe((value) => {
-        val = value;
-      });
+      this.getPauseButtonCountSubscription = this.timerService
+        .getPauseButtonCountObserver()
+        .subscribe((value) => {
+          val = value;
+        });
 
       this.timerService.setPauseButtonCountObserver(val + 1);
 

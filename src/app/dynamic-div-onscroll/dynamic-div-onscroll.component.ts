@@ -41,6 +41,10 @@ export class DynamicDivOnscrollComponent implements AfterViewInit {
     this.createComponent();
     this.createComponent();
     this.createComponent();
+    this.createComponent();
+    this.createComponent();
+    this.createComponent();
+    this.createComponent();
   }
 
   createComponent(): void {

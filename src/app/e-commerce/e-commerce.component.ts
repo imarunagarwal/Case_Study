@@ -14,9 +14,11 @@ export class ECommerceComponent implements OnInit, OnDestroy {
   constructor(private eCommerceDataService: ECommerceDataService) {}
 
   ngOnInit(): void {
-    this.getStudentDataSubscription = this.eCommerceDataService.getData().subscribe((data: any) => {
-      this.productsData = data;
-    });
+    this.getStudentDataSubscription = this.eCommerceDataService
+      .getData()
+      .subscribe((data: any) => {
+        this.productsData = data;
+      });
   }
 
   ngOnDestroy(): void {
