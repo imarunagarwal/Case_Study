@@ -11,13 +11,13 @@ import { StudentService } from './Service/student.service';
 export class StudentRecordComponent implements OnInit, OnDestroy {
   constructor(private studentService: StudentService) {}
   studentData: IStudentModel[] = [];
-  private studentDataCopy: IStudentModel[] = [];
-  private nameSort = 0;
-  private classSort = 0;
-  private sectionSort = 0;
-  private sub1Sort = 0;
-  private sub2Sort = 0;
-  private sub3Sort = 0;
+  studentDataCopy: IStudentModel[] = [];
+  nameSort = 0;
+  classSort = 0;
+  sectionSort = 0;
+  sub1Sort = 0;
+  sub2Sort = 0;
+  sub3Sort = 0;
   private getStudentDataSubscription: Subscription;
 
   // if 0 sort ascending
