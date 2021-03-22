@@ -44,7 +44,7 @@ export class TimerSettingsComponent implements OnDestroy {
           val = value;
         });
       this.timerService.setTimerLapsOutputObserver(
-        `${lapsOutput}Started At ${new Date()}<br/>`
+        `${lapsOutput}Started At ${new Date().toLocaleString()}<br/>`
       );
       this.timerService.setStartButtonCountObserver(val + 1);
 
