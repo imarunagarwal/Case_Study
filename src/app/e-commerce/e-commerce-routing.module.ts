@@ -5,12 +5,12 @@ import { ECommerceComponent } from './e-commerce.component';
 const routes: Routes = [
   {
     path: '',
-    component: ECommerceComponent
-  }
+    component: ECommerceComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class ECommerceRoutingModule { }
+export class ECommerceRoutingModule {}

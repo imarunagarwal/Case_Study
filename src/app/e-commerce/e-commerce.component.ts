@@ -13,7 +13,7 @@ export class ECommerceComponent implements OnInit, OnDestroy {
   getStudentDataSubscription: Subscription;
   isGrid = true;
 
-  constructor(private eCommerceDataService: ECommerceDataService) { }
+  constructor(private eCommerceDataService: ECommerceDataService) {}
 
   ngOnInit(): void {
     this.getStudentDataSubscription = this.eCommerceDataService
@@ -23,7 +23,7 @@ export class ECommerceComponent implements OnInit, OnDestroy {
       });
   }
 
-  Toggle(value:boolean): void {
+  Toggle(value: boolean): void {
     this.isGrid = value;
   }
 

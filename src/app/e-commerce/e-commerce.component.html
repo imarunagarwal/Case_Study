@@ -2,22 +2,36 @@
   <div class="form-inline my-2 my-lg-0">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link cursor-pointer" (click)="Toggle(true)" [ngClass]="{'active':isGrid}">Grid View</a>
+        <a
+          class="nav-link cursor-pointer"
+          (click)="Toggle(true)"
+          [ngClass]="{ active: isGrid }"
+          >Grid View</a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link cursor-pointer" (click)="Toggle(false)" [ngClass]="{'active':!isGrid}">List View</a>
+        <a
+          class="nav-link cursor-pointer"
+          (click)="Toggle(false)"
+          [ngClass]="{ active: !isGrid }"
+          >List View</a
+        >
       </li>
     </ul>
   </div>
 </nav>
 
 <div class="content">
-  <div class="cards" [ngClass]="{'cards-list':!isGrid}">
+  <div class="cards" [ngClass]="{ 'cards-list': !isGrid }">
     <div class="card-deck" *ngFor="let product of productsData">
       <div class="card">
         <div *ngIf="isGrid" style="padding: 15px">
-          <img src="assets/images/download.jfif" style="background-color: lightgrey" class="card-img-top"
-            alt="Broken Image" />
+          <img
+            src="assets/images/download.jfif"
+            style="background-color: lightgrey"
+            class="card-img-top"
+            alt="Broken Image"
+          />
         </div>
         <h6 class="card-header text-primary text-center">
           {{ product.product_name }}
@@ -35,7 +49,7 @@
             Average Review Rating:
             <span class="text-primary">{{
               product.average_review_rating
-              }}</span>
+            }}</span>
           </h6>
         </div>
       </div>
