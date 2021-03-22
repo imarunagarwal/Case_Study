@@ -11,7 +11,9 @@ import { ECommerceDataService } from './Services/e-commerce.service';
 export class ECommerceComponent implements OnInit, OnDestroy {
   productsData: IProductsData[] = [];
   getStudentDataSubscription: Subscription;
-  constructor(private eCommerceDataService: ECommerceDataService) {}
+  isGrid = true;
+
+  constructor(private eCommerceDataService: ECommerceDataService) { }
 
   ngOnInit(): void {
     this.getStudentDataSubscription = this.eCommerceDataService
@@ -19,6 +21,10 @@ export class ECommerceComponent implements OnInit, OnDestroy {
       .subscribe((data: any) => {
         this.productsData = data;
       });
+  }
+
+  Toggle(value:boolean): void {
+    this.isGrid = value;
   }
 
   ngOnDestroy(): void {
